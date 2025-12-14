@@ -1,0 +1,19 @@
+{
+  "name": "@aman-lajpal/resume",
+  "version": "1.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "aman-lajpal": "index.js"
+  },
+  "keywords": [
+    "resume",
+    "cli",
+    "developer"
+  ],
+  "author": "Aman Navin Lajpal",
+  "license": "MIT",
+  "description": "Aman's resume in terminal"
+}
