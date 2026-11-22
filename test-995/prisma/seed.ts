@@ -4,13 +4,15 @@ import bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Seeding database...');
+  console.log('🌱 Checking database seed state...');
 
-  // Clean existing data
-  await prisma.notificationLog.deleteMany({});
-  await prisma.booking.deleteMany({});
-  await prisma.event.deleteMany({});
-  await prisma.user.deleteMany({});
+  const userCount = await prisma.user.count();
+  if (userCount > 0) {
+    console.log(`ℹ️ Database already contains ${userCount} users. Skipping seed.`);
+    return;
+  }
+
+  console.log('🌱 Seeding database with initial enterprise demo data...');
 
   const hashedPassword = await bcrypt.hash('Password123!', 10);
 

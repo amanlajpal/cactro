@@ -3,8 +3,8 @@ services:
     name: event-booking-api
     env: node
     plan: free
-    buildCommand: npm install && npx prisma generate && npm run build
-    startCommand: npm start
+    buildCommand: npm install --include=dev && node -e "require('fs').copyFileSync('prisma/schema.postgres.prisma', 'prisma/schema.prisma')" && npx prisma generate && npm run build
+    startCommand: npx prisma db push && npx tsx prisma/seed.ts && npm start
     envVars:
       - key: NODE_ENV
         value: production
